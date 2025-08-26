@@ -1,0 +1,19 @@
+ENUM TrafficLight
+    VALUES: RED, GREEN, YELLOW
+
+CLASS TrafficSignal
+    ATTRIBUTE: currentLight
+
+    CONSTRUCTOR()
+        currentLight = RED
+
+    METHOD switchLight()
+        IF currentLight == RED
+            currentLight = GREEN
+        ELSE IF currentLight == GREEN
+            currentLight = YELLOW
+        ELSE IF currentLight == YELLOW
+            currentLight = RED
+
+    METHOD displayLight()
+        PRINT currentLight

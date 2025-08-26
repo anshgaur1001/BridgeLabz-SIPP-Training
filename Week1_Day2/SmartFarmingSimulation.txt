@@ -1,0 +1,26 @@
+ABSTRACT CLASS Crop
+    ATTRIBUTE: name
+    CONSTRUCTOR(name)
+
+    ABSTRACT METHOD waterRequirement()
+    ABSTRACT METHOD harvest()
+
+CLASS Rice EXTENDS Crop
+    CONSTRUCTOR()
+        name = "Rice"
+
+    METHOD waterRequirement()
+        RETURN "High water needed"
+
+    METHOD harvest()
+        RETURN "Harvest after 120 days"
+
+CLASS Wheat EXTENDS Crop
+    CONSTRUCTOR()
+        name = "Wheat"
+
+    METHOD waterRequirement()
+        RETURN "Medium water needed"
+
+    METHOD harvest()
+        RETURN "Harvest after 90 days"

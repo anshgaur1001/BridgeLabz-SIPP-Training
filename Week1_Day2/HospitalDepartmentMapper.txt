@@ -1,0 +1,15 @@
+CLASS Doctor
+    ATTRIBUTES: name, specialization
+    CONSTRUCTOR(name, specialization)
+
+CLASS Hospital
+    ATTRIBUTE: Map<String, List<Doctor>> departmentMap
+
+    METHOD addDoctor(department, doctor)
+        departmentMap[department].add(doctor)
+
+    METHOD filterBySpecialization(spec)
+        FOR EACH department IN departmentMap
+            FOR EACH doctor IN departmentMap[department]
+                IF doctor.specialization == spec
+                    PRINT doctor.name, department

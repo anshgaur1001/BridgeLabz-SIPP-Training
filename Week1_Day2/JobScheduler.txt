@@ -1,0 +1,14 @@
+CLASS Job
+    ATTRIBUTES: id, deadline, processingTime
+    CONSTRUCTOR(id, deadline, processingTime)
+
+CLASS JobScheduler
+    ATTRIBUTE: priorityQueue<Job> jobs   // priority = earliest deadline, then shortest time
+
+    METHOD addJob(job)
+        jobs.enqueue(job)
+
+    METHOD processJobs()
+        WHILE jobs IS NOT EMPTY
+            job = jobs.dequeue()
+            PRINT "Processing job " + job.id

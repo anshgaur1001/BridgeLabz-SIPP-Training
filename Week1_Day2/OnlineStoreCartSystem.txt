@@ -1,0 +1,15 @@
+CLASS Item
+    ATTRIBUTES: name, price
+    CONSTRUCTOR(name, price)
+
+CLASS ShoppingCart
+    ATTRIBUTE: List<Item> cart
+
+    METHOD addItem(item)
+        cart.add(item)
+
+    GENERIC METHOD calculateTotalPrice()
+        total = 0
+        FOR EACH item IN cart
+            total = total + item.price
+        RETURN total

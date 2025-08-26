@@ -1,0 +1,13 @@
+CLASS QuizTimer
+    ATTRIBUTE: circularArray timeSlots
+    ATTRIBUTE: int currentIndex
+
+    CONSTRUCTOR(timeSlots)
+        this.timeSlots = timeSlots
+        currentIndex = 0
+
+    METHOD nextSlot()
+        currentIndex = (currentIndex + 1) % timeSlots.length
+        IF timeSlots[currentIndex] IS NEAR END
+            PRINT "Warning: Time is about to end"
+        RETURN timeSlots[currentIndex]
