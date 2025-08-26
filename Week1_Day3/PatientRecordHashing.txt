@@ -1,0 +1,18 @@
+CLASS Patient
+    ATTRIBUTES: id, name, age, disease
+    CONSTRUCTOR(id, name, age, disease)
+
+CLASS PatientManager
+    ATTRIBUTE: HashMap<Integer, Patient> records
+
+    METHOD addPatient(patient)
+        records.put(patient.id, patient)
+
+    METHOD getPatient(id)
+        RETURN records.get(id)
+
+    METHOD updatePatient(id, newPatient)
+        records.put(id, newPatient)
+
+    METHOD deletePatient(id)
+        records.remove(id)

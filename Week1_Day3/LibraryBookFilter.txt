@@ -1,0 +1,12 @@
+CLASS Book
+    ATTRIBUTES: title, year, rating
+    CONSTRUCTOR(title, year, rating)
+
+CLASS Library
+    ATTRIBUTE: List<Book> books
+
+    METHOD filterBooks()
+        RETURN books.stream()
+                    .FILTER(b -> b.year > 2015)
+                    .FILTER(b -> b.rating > 4.5)
+                    .COLLECT(toList)

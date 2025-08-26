@@ -1,0 +1,26 @@
+INTERFACE Searchable
+    METHOD search(keyword)
+
+INTERFACE Printable
+    METHOD print()
+
+CLASS Report IMPLEMENTS Searchable, Printable
+    ATTRIBUTE: content
+    CONSTRUCTOR(content)
+
+    METHOD search(keyword)
+        IF keyword IN content
+            RETURN "Found"
+        ELSE
+            RETURN "Not Found"
+
+    METHOD print()
+        PRINT content
+
+CLASS Prescription EXTENDS Report
+    CONSTRUCTOR(content)
+        CALL super(content)
+
+CLASS Diagnosis EXTENDS Report
+    CONSTRUCTOR(content)
+        CALL super(content)

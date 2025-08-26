@@ -1,0 +1,18 @@
+GENERIC CLASS Transaction<T>
+    ATTRIBUTE: T paymentMethod
+    CONSTRUCTOR(paymentMethod)
+
+    METHOD process()
+        PRINT "Processing payment via " + paymentMethod
+
+CLASS UPI
+    ATTRIBUTE: upiId
+    CONSTRUCTOR(upiId)
+
+CLASS Card
+    ATTRIBUTES: cardNumber, expiry
+    CONSTRUCTOR(cardNumber, expiry)
+
+CLASS NetBanking
+    ATTRIBUTE: accountNumber
+    CONSTRUCTOR(accountNumber)

@@ -1,0 +1,18 @@
+CLASS Customer
+    ATTRIBUTES: name, address, phone
+    CONSTRUCTOR(name, address, phone)
+
+CLASS Restaurant
+    ATTRIBUTES: name, location
+    CONSTRUCTOR(name, location)
+
+CLASS DeliveryBoy
+    ATTRIBUTES: name, id
+    CONSTRUCTOR(name, id)
+
+CLASS Order
+    ATTRIBUTES: orderId, Customer customer, Restaurant restaurant, DeliveryBoy deliveryBoy
+    CONSTRUCTOR(orderId, customer, restaurant, deliveryBoy)
+
+    METHOD displayOrderDetails()
+        PRINT orderId, customer.name, restaurant.name, deliveryBoy.name

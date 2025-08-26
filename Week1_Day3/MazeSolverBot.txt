@@ -1,0 +1,25 @@
+CLASS MazeSolver
+    ATTRIBUTE: grid[][], visited[][]
+    ATTRIBUTE: startX, startY, endX, endY
+
+    METHOD solveMaze(x, y)
+        IF (x, y) == (endX, endY)
+            RETURN true
+
+        IF grid[x][y] IS wall OR visited[x][y] == true
+            RETURN false
+
+        visited[x][y] = true
+
+        // Try all 4 directions
+        IF solveMaze(x+1, y) == true
+            RETURN true
+        IF solveMaze(x-1, y) == true
+            RETURN true
+        IF solveMaze(x, y+1) == true
+            RETURN true
+        IF solveMaze(x, y-1) == true
+            RETURN true
+
+        visited[x][y] = false   // backtrack
+        RETURN false
