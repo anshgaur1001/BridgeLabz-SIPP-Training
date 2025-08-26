@@ -1,0 +1,26 @@
+CLASS Ticket
+    ATTRIBUTES: movieName, seatNumber, price, status
+    CONSTRUCTOR(movieName, seatNumber, price)
+        status = "Booked"
+
+CLASS Theatre
+    ATTRIBUTES: name, List<Ticket> tickets
+
+    METHOD issueTicket(movieName, seatNumber, price)
+        ticket = new Ticket(movieName, seatNumber, price)
+        tickets.add(ticket)
+        RETURN ticket
+
+    METHOD cancelTicket(ticket)
+        ticket.status = "Cancelled"
+        PRINT "Seat " + ticket.seatNumber + " is now available"
+
+CLASS Customer
+    ATTRIBUTES: name
+    CONSTRUCTOR(name)
+
+    METHOD bookTicket(theatre, movieName, seatNumber, price)
+        RETURN theatre.issueTicket(movieName, seatNumber, price)
+
+    METHOD cancelBooking(theatre, ticket)
+        theatre.cancelTicket(ticket)

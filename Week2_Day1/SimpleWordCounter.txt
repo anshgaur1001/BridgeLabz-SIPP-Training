@@ -1,0 +1,14 @@
+CLASS WordCounter
+    ATTRIBUTE: Map<String, Integer> wordMap
+
+    METHOD processText(text)
+        words = text.toLowerCase().removePunctuation().split(" ")
+        FOR word IN words
+            wordMap.put(word, wordMap.getOrDefault(word, 0) + 1)
+
+    METHOD displaySortedByFrequency()
+        sorted = wordMap.entrySet().stream()
+                 .sorted(byValueDescending)
+                 .toList()
+        FOR entry IN sorted
+            PRINT entry.key + " → " + entry.value

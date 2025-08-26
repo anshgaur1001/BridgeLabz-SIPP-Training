@@ -1,0 +1,14 @@
+CLASS TaskOrganizer
+    ATTRIBUTE: LinkedHashMap<Integer, String> tasks
+    ATTRIBUTE: taskCounter = 0
+
+    METHOD addTask(description)
+        taskCounter++
+        tasks.put(taskCounter, description)
+
+    METHOD removeTask(taskId)
+        tasks.remove(taskId)
+
+    METHOD viewTasks()
+        FOR EACH entry IN tasks
+            PRINT entry.key + " → " + entry.value

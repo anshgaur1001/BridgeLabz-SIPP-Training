@@ -1,0 +1,15 @@
+CLASS Attendance
+    ATTRIBUTE: char[][] records   // rows = students, columns = days
+
+    METHOD markAttendance(studentId, day, status)  // P or A
+        records[studentId][day] = status
+
+    METHOD updateAttendance(studentId, day, status)
+        records[studentId][day] = status
+
+    METHOD generateReport(studentId)
+        count = 0
+        FOR day IN records[studentId]
+            IF records[studentId][day] == 'P'
+                count++
+        PRINT "Student " + studentId + " Present Days = " + count

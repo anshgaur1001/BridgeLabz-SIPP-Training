@@ -1,0 +1,34 @@
+CLASS BusStop
+    ATTRIBUTE: stopName
+    ATTRIBUTE: next
+
+CLASS BusRoute
+    ATTRIBUTE: head
+
+    METHOD insertStop(afterStop, newStop)
+        node = head
+        WHILE node != null
+            IF node.stopName == afterStop
+                newNode = new BusStop(newStop)
+                newNode.next = node.next
+                node.next = newNode
+                BREAK
+            node = node.next
+
+    METHOD deleteStop(stopName)
+        prev = null
+        node = head
+        WHILE node != null
+            IF node.stopName == stopName
+                prev.next = node.next
+                BREAK
+            prev = node
+            node = node.next
+
+    METHOD searchStop(stopName)
+        node = head
+        WHILE node != null
+            IF node.stopName == stopName
+                RETURN true
+            node = node.next
+        RETURN false

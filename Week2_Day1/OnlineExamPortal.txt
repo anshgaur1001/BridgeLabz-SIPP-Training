@@ -1,0 +1,26 @@
+CLASS User
+    ATTRIBUTES: username, password
+    CONSTRUCTOR(username, password)
+
+    METHOD login()
+        PRINT "Basic login check"
+
+CLASS Student EXTENDS User
+    ATTRIBUTE: enrolledCourses
+    CONSTRUCTOR(username, password, enrolledCourses)
+
+    METHOD login()
+        IF username IS REGISTERED AND enrolledCourses NOT EMPTY
+            PRINT "Student login successful – show exams"
+        ELSE
+            PRINT "Login failed – not enrolled"
+
+CLASS Admin EXTENDS User
+    ATTRIBUTE: adminPrivileges
+    CONSTRUCTOR(username, password, adminPrivileges)
+
+    METHOD login()
+        IF username IS STAFF AND adminPrivileges == true
+            PRINT "Admin login successful – show management tools"
+        ELSE
+            PRINT "Login failed – invalid admin"
