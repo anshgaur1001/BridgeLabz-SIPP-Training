@@ -1,0 +1,13 @@
+CLASS LoadBalancer
+    ATTRIBUTE: Queue<String> servers
+
+    METHOD addServer(server)
+        servers.enqueue(server)
+
+    METHOD removeServer(server)
+        servers.remove(server)
+
+    METHOD assignRequest(requestId)
+        server = servers.dequeue()
+        PRINT "Request " + requestId + " → " + server
+        servers.enqueue(server)

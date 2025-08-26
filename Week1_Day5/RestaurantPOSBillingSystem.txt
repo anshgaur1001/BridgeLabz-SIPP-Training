@@ -1,0 +1,48 @@
+INTERFACE TaxCalculator
+    METHOD calculateTax(amount)
+
+CLASS FoodTax IMPLEMENTS TaxCalculator
+    METHOD calculateTax(amount)
+        RETURN amount * 0.05
+
+CLASS BeverageTax IMPLEMENTS TaxCalculator
+    METHOD calculateTax(amount)
+        RETURN amount * 0.12
+
+CLASS ImportedTax IMPLEMENTS TaxCalculator
+    METHOD calculateTax(amount)
+        RETURN amount * 0.05 + customsDuty(amount)
+
+INTERFACE DiscountPolicy
+    METHOD applyDiscount(amount)
+
+CLASS NoDiscount IMPLEMENTS DiscountPolicy
+    METHOD applyDiscount(amount)
+        RETURN amount
+
+CLASS FlatDiscount IMPLEMENTS DiscountPolicy
+    ATTRIBUTE: flatAmount
+    METHOD applyDiscount(amount)
+        RETURN amount - flatAmount
+
+CLASS PercentageDiscount IMPLEMENTS DiscountPolicy
+    ATTRIBUTE: percent
+    METHOD applyDiscount(amount)
+        RETURN amount - (amount * percent / 100)
+
+CLASS Item
+    ATTRIBUTES: name, price, TaxCalculator tax
+    CONSTRUCTOR(name, price, tax)
+
+    METHOD getFinalPrice()
+        RETURN price + tax.calculateTax(price)
+
+CLASS Bill
+    ATTRIBUTE: List<Item> items
+    ATTRIBUTE: DiscountPolicy discount
+
+    METHOD calculateTotal()
+        total = 0
+        FOR EACH item IN items
+            total += item.getFinalPrice()
+        RETURN discount.applyDiscount(total)

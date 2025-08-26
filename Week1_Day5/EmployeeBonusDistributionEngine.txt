@@ -1,0 +1,18 @@
+CLASS Employee
+    ATTRIBUTES: name, department, rating, baseSalary
+    CONSTRUCTOR(name, dept, rating, salary)
+
+CLASS BonusEngine
+    ATTRIBUTE: List<Employee> employees
+
+    METHOD calculateBonus()
+        grouped = employees.stream().collect(groupBy(department))
+
+        FOR EACH dept IN grouped
+            totalSalary = SUM(employee.baseSalary FOR employee IN grouped[dept])
+            bonusPool = totalSalary * 0.10
+            totalRatings = SUM(employee.rating FOR employee IN grouped[dept])
+
+            FOR EACH employee IN grouped[dept]
+                share = (employee.rating / totalRatings) * bonusPool
+                PRINT dept, employee.name, "Bonus = " + share

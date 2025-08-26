@@ -1,0 +1,29 @@
+INTERFACE DiagnosisStrategy
+    METHOD diagnose(List<String> symptoms)
+
+CLASS RuleBasedDiagnosis IMPLEMENTS DiagnosisStrategy
+    METHOD diagnose(symptoms)
+        IF symptoms CONTAINS ["fever", "cough", "fatigue"]
+            RETURN ["Flu", "COVID-19"]
+        ELSE
+            RETURN ["Unknown disease"]
+
+CLASS AIBasedDiagnosis IMPLEMENTS DiagnosisStrategy
+    METHOD diagnose(symptoms)
+        RETURN ["AI Prediction: Migraine", "Vertigo"]
+
+CLASS ProbabilityBasedDiagnosis IMPLEMENTS DiagnosisStrategy
+    METHOD diagnose(symptoms)
+        RETURN ["Probabilistic Outcome"]
+
+CLASS DiagnosisContext
+    ATTRIBUTE: DiagnosisStrategy strategy
+    METHOD setStrategy(strategy)
+        this.strategy = strategy
+    METHOD executeDiagnosis(symptoms)
+        RETURN strategy.diagnose(symptoms)
+
+# Adding a new GeneticPatternDiagnosis without touching old code
+CLASS GeneticPatternDiagnosis IMPLEMENTS DiagnosisStrategy
+    METHOD diagnose(symptoms)
+        RETURN ["Genetic disorder prediction"]

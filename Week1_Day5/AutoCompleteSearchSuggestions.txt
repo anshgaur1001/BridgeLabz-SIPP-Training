@@ -1,0 +1,38 @@
+CLASS TrieNode
+    ATTRIBUTE: Map<char, TrieNode> children
+    ATTRIBUTE: boolean isEndOfWord
+    ATTRIBUTE: int popularity
+
+CLASS Trie
+    ATTRIBUTE: root
+
+    CONSTRUCTOR()
+        root = new TrieNode()
+
+    METHOD insert(word, popularity)
+        node = root
+        FOR char IN word
+            IF char NOT IN node.children
+                node.children[char] = new TrieNode()
+            node = node.children[char]
+        node.isEndOfWord = true
+        node.popularity = popularity
+
+    METHOD search(prefix, N)
+        node = root
+        FOR char IN prefix
+            IF char NOT IN node.children
+                RETURN []
+            node = node.children[char]
+
+        results = DFSCollect(node, prefix)
+        SORT results BY popularity DESC
+        RETURN top N results
+
+    METHOD DFSCollect(node, currentWord)
+        results = []
+        IF node.isEndOfWord
+            results.add((currentWord, node.popularity))
+        FOR EACH child IN node.children
+            results.addAll(DFSCollect(child, currentWord + child.char))
+        RETURN results

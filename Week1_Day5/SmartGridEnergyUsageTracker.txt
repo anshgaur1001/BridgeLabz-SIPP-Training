@@ -1,0 +1,16 @@
+CLASS Reading
+    ATTRIBUTE: value
+
+CLASS SmartGrid
+    ATTRIBUTE: Map<Zone, Map<Day, List<Reading>>> data
+
+    METHOD addReading(zone, day, reading)
+        data[zone][day].add(reading)
+
+    METHOD generatePeakReport()
+        FOR EACH zone IN data
+            FOR EACH day IN data[zone]
+                peak = data[zone][day].stream()
+                       .mapToInt(r -> r.value)
+                       .max()
+                PRINT "Zone: " + zone + ", Day: " + day + ", Peak = " + peak
