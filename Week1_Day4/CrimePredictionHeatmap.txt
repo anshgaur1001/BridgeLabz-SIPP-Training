@@ -1,0 +1,16 @@
+CLASS CityGraph
+    ATTRIBUTE: adjacencyList<Zone, List<Zone>>
+    ATTRIBUTE: Map<Zone, riskLevel>
+
+    METHOD addConnection(zone1, zone2)
+        adjacencyList[zone1].add(zone2)
+        adjacencyList[zone2].add(zone1)
+
+    METHOD dfs(zone, visited, threshold)
+        visited.add(zone)
+        IF riskLevel[zone] > threshold
+            PRINT "High risk zone: " + zone
+
+        FOR EACH neighbor IN adjacencyList[zone]
+            IF neighbor NOT IN visited
+                dfs(neighbor, visited, threshold)

@@ -1,0 +1,31 @@
+CLASS Flight
+    ATTRIBUTES: flightId, price, duration
+    CONSTRUCTOR(flightId, price, duration)
+
+CLASS FlightAnalyzer
+    METHOD mergeSort(flights[], comparator)
+        IF flights.length <= 1
+            RETURN flights
+        mid = flights.length / 2
+        left = mergeSort(flights[0..mid], comparator)
+        right = mergeSort(flights[mid+1..end], comparator)
+        RETURN merge(left, right, comparator)
+
+    METHOD merge(left[], right[], comparator)
+        result = []
+        i=0, j=0
+        WHILE i < left.length AND j < right.length
+            IF comparator(left[i], right[j]) <= 0
+                ADD left[i] TO result
+                i++
+            ELSE
+                ADD right[j] TO result
+                j++
+        ADD remaining elements
+        RETURN result
+
+    COMPARATOR compareByPriceAndDuration(f1, f2)
+        IF f1.price != f2.price
+            RETURN f1.price - f2.price
+        ELSE
+            RETURN f1.duration - f2.duration

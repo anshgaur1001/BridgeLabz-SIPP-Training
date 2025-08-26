@@ -1,0 +1,33 @@
+CLASS Account
+    ATTRIBUTES: accountNumber, balance
+    CONSTRUCTOR(accountNumber, balance)
+
+    METHOD deposit(amount)
+        balance = balance + amount
+
+    METHOD withdraw(amount)
+        PRINT "Base withdrawal rule"
+
+CLASS Saving EXTENDS Account
+    ATTRIBUTE: withdrawalLimit = 10000
+
+    CONSTRUCTOR(accountNumber, balance)
+        CALL super(accountNumber, balance)
+
+    METHOD withdraw(amount)
+        IF amount <= withdrawalLimit AND amount <= balance
+            balance = balance - amount
+        ELSE
+            PRINT "Withdrawal not allowed"
+
+CLASS Current EXTENDS Account
+    ATTRIBUTE: overdraftLimit = 5000
+
+    CONSTRUCTOR(accountNumber, balance)
+        CALL super(accountNumber, balance)
+
+    METHOD withdraw(amount)
+        IF amount <= balance + overdraftLimit
+            balance = balance - amount
+        ELSE
+            PRINT "Exceeds overdraft limit"

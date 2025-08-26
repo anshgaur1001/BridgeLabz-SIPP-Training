@@ -1,0 +1,19 @@
+CLASS Student
+    ATTRIBUTES: name, id
+    CONSTRUCTOR(name, id)
+
+CLASS Course
+    ATTRIBUTES: courseName
+    CONSTRUCTOR(courseName)
+
+CLASS College
+    ATTRIBUTE: Map<Course, List<Student>> registrations
+
+    METHOD registerStudent(course, student)
+        registrations[course].add(student)
+
+    METHOD displayRegistrations()
+        FOR EACH course IN registrations
+            PRINT "Course: " + course.courseName
+            FOR EACH student IN registrations[course]
+                PRINT student.name

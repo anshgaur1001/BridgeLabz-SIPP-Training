@@ -1,0 +1,26 @@
+INTERFACE Rentable
+    METHOD rent()
+    METHOD returnVehicle()
+
+ABSTRACT CLASS Vehicle IMPLEMENTS Rentable
+    ATTRIBUTES: vehicleId, brand
+    CONSTRUCTOR(vehicleId, brand)
+
+CLASS Car EXTENDS Vehicle
+    METHOD rent()
+        PRINT "Car rented"
+    METHOD returnVehicle()
+        PRINT "Car returned"
+
+CLASS Bike EXTENDS Vehicle
+    METHOD rent()
+        PRINT "Bike rented"
+    METHOD returnVehicle()
+        PRINT "Bike returned"
+
+CLASS VehicleFactory
+    STATIC METHOD createVehicle(type, vehicleId, brand)
+        IF type == "Car"
+            RETURN new Car(vehicleId, brand)
+        ELSE IF type == "Bike"
+            RETURN new Bike(vehicleId, brand)

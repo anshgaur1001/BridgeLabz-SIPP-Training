@@ -1,0 +1,17 @@
+CLASS Transaction
+    ATTRIBUTES: id, merchant, amount, month
+    CONSTRUCTOR(id, merchant, amount, month)
+
+CLASS WalletReport
+    ATTRIBUTE: List<Transaction> transactions
+
+    METHOD generateReport()
+        result = transactions.stream()
+                 .COLLECT(groupingBy(t -> t.merchant,
+                          groupingBy(t -> t.month,
+                          summingDouble(t -> t.amount))))
+
+        FOR EACH merchant IN result
+            PRINT "Merchant: " + merchant
+            FOR EACH month IN result[merchant]
+                PRINT "Month: " + month + ", Total: " + result[merchant][month]
