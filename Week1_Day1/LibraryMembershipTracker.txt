@@ -1,0 +1,9 @@
+CLASS Member
+    ATTRIBUTES: name, ID, membershipDate, expiryDate
+    CONSTRUCTOR(name, ID, membershipDate, expiryDate)
+
+    METHOD checkValidity(currentDate)
+        IF currentDate <= expiryDate
+            RETURN "Valid"
+        ELSE
+            RETURN "Expired"

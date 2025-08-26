@@ -1,0 +1,10 @@
+CLASS TextEditor
+    ATTRIBUTE: stack undoStack
+
+    METHOD type(text)
+        ADD text TO undoStack
+
+    METHOD undo()
+        IF undoStack IS NOT EMPTY
+            POP lastOperation FROM undoStack
+            REVERT lastOperation

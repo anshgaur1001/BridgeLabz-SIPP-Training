@@ -1,0 +1,14 @@
+CLASS Employee
+    ATTRIBUTES: name, department
+    CONSTRUCTOR(name, department)
+
+CLASS EmployeeManager
+    ATTRIBUTE: ArrayList<Employee> employees
+
+    METHOD addEmployee(employee)
+        employees.add(employee)
+
+    METHOD filterByDepartment(dept)
+        RETURN employees.stream()
+                        .FILTER(e -> e.department == dept)
+                        .COLLECT(toList)

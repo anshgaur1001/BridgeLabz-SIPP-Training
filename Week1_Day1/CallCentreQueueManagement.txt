@@ -1,0 +1,18 @@
+CLASS Customer
+    ATTRIBUTES: name, type  // type = "normal" OR "emergency"
+    CONSTRUCTOR(name, type)
+
+CLASS CallCenter
+    ATTRIBUTES: queue normalQueue, queue emergencyQueue
+
+    METHOD addCustomer(customer)
+        IF customer.type == "emergency"
+            ENQUEUE customer INTO emergencyQueue
+        ELSE
+            ENQUEUE customer INTO normalQueue
+
+    METHOD serveCustomer()
+        IF emergencyQueue IS NOT EMPTY
+            DEQUEUE customer FROM emergencyQueue
+        ELSE
+            DEQUEUE customer FROM normalQueue

@@ -1,0 +1,9 @@
+CLASS StudentScores
+    ATTRIBUTE: HashMap<String, Integer> scores
+
+    METHOD addScore(name, marks)
+        scores.put(name, marks)
+
+    METHOD getTopScorer()
+        FIND entry WITH MAX value IN scores
+        RETURN entry.name, entry.marks

@@ -1,0 +1,19 @@
+CLASS Pet
+    ATTRIBUTES: name, age
+    CONSTRUCTOR(name, age)
+    METHOD displayInfo()
+
+CLASS Dog EXTENDS Pet
+    ATTRIBUTE: breed
+    CONSTRUCTOR(name, age, breed)
+    METHOD displayInfo()
+
+CLASS Cat EXTENDS Pet
+    ATTRIBUTE: color
+    CONSTRUCTOR(name, age, color)
+    METHOD displayInfo()
+
+CLASS Bird EXTENDS Pet
+    ATTRIBUTE: wingSpan
+    CONSTRUCTOR(name, age, wingSpan)
+    METHOD displayInfo()
